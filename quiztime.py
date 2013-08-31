@@ -34,7 +34,8 @@ def createTestBank():
 
 # Selects the category to be quizzed on
 def selectCategory(testBank):
-	os.system('cls' if os.name=='nt' else 'clear')
+	os.system('cls' if os.name=='nt' else 'clear') # real estate management
+	# Print all of the categories first.
 	inc = 1
 	print "Select a category to be quizzed on:"
 	for k in testBank: #print all categories
@@ -43,6 +44,7 @@ def selectCategory(testBank):
 	selection = raw_input("> ")
 	selection = int(selection)
 	selection < inc and selection > 0
+	# Now select the category. Is there a more efficient method for this function?
 	inc = 1
 	for category in testBank:
 		if inc == selection:
@@ -88,12 +90,12 @@ def main():
 	    os.system('cls' if os.name=='nt' else 'clear')
             print "That is not a valid selection."
             break
-	elif ord(selection) == ord('q'):
+	elif ord(selection) == ord('q'): # Added graceful exit option
 	    os.system('cls' if os.name=='nt' else 'clear')
 	    break
-	elif ord(selection) == ord('n'):
+	elif ord(selection) == ord('n'): # Added new category selection
 	    category = selectCategory(testBank)
-	    continue
+	    continue # Return to beginning of the loop if we're selecting a new category.
 
         answer = possible_answers[ord(selection) - ord('a')]
         
